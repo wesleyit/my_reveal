@@ -8,18 +8,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/reveal/css/reset.css">
-    <link rel="stylesheet" href="/reveal/css/reveal.css">
-    <link rel="stylesheet" href="/aws_reveal/aws_light_theme.css" id="theme">
-    <link rel="stylesheet" href="/reveal/lib/css/monokai.css">
-    <link rel="stylesheet" href="/font_awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/reveal/css/reset.css">
+    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/reveal/css/reveal.css">
+    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/aws_reveal/aws_light_theme.css"
+        id="theme">
+    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/reveal/lib/css/monokai.css">
+    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/font_awesome/css/font-awesome.min.css">
 
     <script>
         var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? '/reveal/css/print/pdf.css' :
-            '/reveal/css/print/paper.css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+        'https://www.wesleyrodrigues.com.br/my_reveal/reveal/css/print/pdf.css' :
+            'https://www.wesleyrodrigues.com.br/my_reveal/reveal/css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
 
@@ -37,7 +39,7 @@
         All rights reserved. Amazon Confidential and Trademark.
     </div>
 
-    <script src="/reveal/js/reveal.js"></script>
+    <script src="https://www.wesleyrodrigues.com.br/my_reveal/reveal/js/reveal.js"></script>
 
     <script>
         Reveal.initialize({
@@ -48,35 +50,35 @@
             hash: true,
             transition: 'slide',
             dependencies: [{
-                    src: '/reveal/plugin/markdown/marked.js',
+                    src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/markdown/marked.js',
                     condition: function () {
                         return !!document.querySelector('[data-markdown]');
                     }
                 },
                 {
-                    src: '/reveal/plugin/markdown/markdown.js',
+                    src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/markdown/markdown.js',
                     condition: function () {
                         return !!document.querySelector('[data-markdown]');
                     }
                 },
                 {
-                    src: '/reveal/plugin/highlight/highlight.js'
+                    src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/highlight/highlight.js'
                 },
                 {
-                    src: '/reveal/plugin/search/search.js',
+                    src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/search/search.js',
                     async: true
                 },
                 {
-                    src: '/reveal/plugin/zoom-js/zoom.js',
+                    src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/zoom-js/zoom.js',
                     async: true
                 },
                 {
-                    src: '/reveal/plugin/notes/notes.js',
+                    src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/notes/notes.js',
                     async: true
                 },
                 // External plugins
                 {
-                    src: '/reveal_plugins/chalkboard/chalkboard.js',
+                    src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal_plugins/chalkboard/chalkboard.js',
                     async: true
                 },
             ],
