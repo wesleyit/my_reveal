@@ -1,4 +1,4 @@
-<!-- .slide: data-background="/aws_reveal/backgrounds/nologo_pattern_white.png" -->
+<!-- .slide: data-background="https://www.wesleyrodrigues.com.br/my_reveal/aws_reveal/backgrounds/nologo_pattern_white.png" -->
 
 # Welcome, Amazonian
 
