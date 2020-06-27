@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Presentation</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/reveal/css/reset.css">
+    <link rel="stylesheet" href="/reveal/css/reveal.css">
+    <link rel="stylesheet" href="/aws_reveal/aws_light_theme.css" id="theme">
+    <link rel="stylesheet" href="/reveal/lib/css/monokai.css">
+    <link rel="stylesheet" href="/font_awesome/css/font-awesome.min.css">
+
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '/reveal/css/print/pdf.css' :
+            '/reveal/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown="presentation.md" data-separator="^---\n" data-separator-vertical="^--\n"
+                data-charset="utf-8">
+            </section>
+        </div>
+    </div>
+    <div class="footer">© 2020, Amazon Web Services, Inc. or its Affiliates.
+        All rights reserved. Amazon Confidential and Trademark.
+    </div>
+
+    <script src="/reveal/js/reveal.js"></script>
+
+    <script>
+        Reveal.initialize({
+            controls: true,
+            controlsLayout: 'edges',
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide',
+            dependencies: [{
+                    src: '/reveal/plugin/markdown/marked.js',
+                    condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                },
+                {
+                    src: '/reveal/plugin/markdown/markdown.js',
+                    condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                },
+                {
+                    src: '/reveal/plugin/highlight/highlight.js'
+                },
+                {
+                    src: '/reveal/plugin/search/search.js',
+                    async: true
+                },
+                {
+                    src: '/reveal/plugin/zoom-js/zoom.js',
+                    async: true
+                },
+                {
+                    src: '/reveal/plugin/notes/notes.js',
+                    async: true
+                },
+                // External plugins
+                {
+                    src: '/reveal_plugins/chalkboard/chalkboard.js',
+                    async: true
+                },
+            ],
+            keyboard: {
+                67: function () {
+                    RevealChalkboard.toggleNotesCanvas()
+                }, // toggle notes canvas when 'c' is pressed
+                66: function () {
+                    RevealChalkboard.toggleChalkboard()
+                }, // toggle chalkboard when 'b' is pressed
+                46: function () {
+                    RevealChalkboard.clear()
+                }, // clear chalkboard when 'DEL' is pressed
+                8: function () {
+                    RevealChalkboard.reset()
+                }, // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+                68: function () {
+                    RevealChalkboard.download()
+                }, // downlad recorded chalkboard drawing when 'd' is pressed
+                88: function () {
+                    RevealChalkboard.colorNext()
+                }, // cycle colors forward when 'x' is pressed
+                89: function () {
+                    RevealChalkboard.colorPrev()
+                }, // cycle colors backward when 'y' is pressed
+            },
+            chalkboard: {
+                toggleChalkboardButton: {
+                    left: "60px",
+                    bottom: "30px",
+                    top: "auto",
+                    right: "auto"
+                },
+                toggleNotesButton: {
+                    left: "90px",
+                    bottom: "30px",
+                    top: "auto",
+                    right: "auto"
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
