@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+#
+# apresentar — open a deck in Chrome/Chromium so offline (file://) decks work
+#
+# Chrome blocks file:// -> file:// XHR by default, which breaks the markdown
+# plugin when you just double-click an offline deck. This launcher opens the
+# deck with --allow-file-access-from-files in a dedicated browser profile, so
+# the flag actually takes effect even if your main Chrome is already running.
+#
+# Usage:
+#   apresentar [deck.html]      # defaults to ./apresentacao.html
+#
+set -euo pipefail
+
+deck="${1:-apresentacao.html}"
+
+if [ ! -f "$deck" ]; then
+    echo "Deck not found: $deck" >&2
+    echo "Usage: apresentar [deck.html]" >&2
+    exit 1
+fi
+
+# Resolve to an absolute file:// URL
+abs="$(cd "$(dirname "$deck")" && pwd)/$(basename "$deck")"
+url="file://$abs"
+
+# Find a Chromium-family browser
+browser=""
+for cand in google-chrome-stable google-chrome chromium chromium-browser brave-browser; do
+    if command -v "$cand" >/dev/null 2>&1; then
+        browser="$cand"
+        break
+    fi
+done
+if [ -z "$browser" ]; then
+    echo "No Chrome/Chromium browser found in PATH." >&2
+    echo "Install one, or open with the flag manually:" >&2
+    echo "    <browser> --allow-file-access-from-files \"$url\"" >&2
+    exit 1
+fi
+
+profile="${MY_REVEAL_DIR:-$HOME/.my_reveal}/.browser-profile"
+mkdir -p "$profile"
+
+exec "$browser" \
+    --allow-file-access-from-files \
+    --user-data-dir="$profile" \
+    --new-window \
+    "$url" >/dev/null 2>&1

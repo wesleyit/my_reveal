@@ -39,16 +39,31 @@ Install the assets locally and get a command that scaffolds new decks:
 curl -fsSL https://www.wesleyrodrigues.com.br/my_reveal/install.sh | bash
 ```
 
-This copies the assets to `~/.my_reveal` and installs the
-`nova_apresentacao_md` command to `~/.local/bin`. Then, in any folder:
+This copies the assets to `~/.my_reveal` and installs two commands to
+`~/.local/bin`: `nova_apresentacao_md` (scaffold a deck) and `apresentar`
+(open an offline deck). Then, in any folder:
 
 ```shell
 nova_apresentacao_md dark minha_palestra
 #   -> creates ./minha_palestra.html and ./minha_palestra.md
 ```
 
-The generated deck references the local assets via `file://`, so you can just
-**double-click the `.html`** — no server and no internet required.
+The generated deck references the local assets via `file://`. Present it with
+the companion command, which opens it in Chrome with the right flag:
+
+```shell
+apresentar minha_palestra.html
+```
+
+> **Why `apresentar` instead of a double-click?** Chrome blocks `file://` pages
+> from reading other local files (the Markdown is loaded via `XMLHttpRequest`),
+> so a plain double-click shows an empty deck. `apresentar` launches the deck
+> with `--allow-file-access-from-files` in a dedicated browser profile, which
+> lifts that restriction. If you prefer to do it by hand:
+>
+> ```shell
+> google-chrome --allow-file-access-from-files --user-data-dir=/tmp/reveal minha_palestra.html
+> ```
 
 ```text
 Usage: nova_apresentacao_md [light|dark] [name] [--online]
@@ -99,7 +114,9 @@ tokens. To tweak colors, edit the `:root` block of
 ```text
 my_reveal/
 ├── install.sh                 # offline installer (Linux)
-├── bin/nova_apresentacao_md   # the deck generator
+├── bin/
+│   ├── nova_apresentacao_md   # the deck generator
+│   └── apresentar             # offline deck launcher (Chrome + flag)
 ├── templates/                 # deck .html / .md templates
 ├── assets/                    # the shared runtime assets
 │   ├── reveal/                #   reveal.js 6 engine + bundled plugins

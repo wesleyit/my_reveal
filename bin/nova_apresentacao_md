@@ -79,6 +79,8 @@ echo
 if [ "$online" -eq 1 ]; then
     echo "Online mode: open with a local web server (e.g. VS Code Live Server)."
 else
-    echo "Offline mode: just open $html in your browser (double-click)."
+    echo "Offline mode: present it with"
+    echo "    apresentar $html"
+    echo "(opens Chrome with the flag that lets offline decks load their Markdown)."
 fi
 echo "Edit $md to write your slides."

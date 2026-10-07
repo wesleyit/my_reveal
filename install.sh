@@ -51,6 +51,8 @@ say "Installing command to $BIN_DIR/nova_apresentacao_md"
 mkdir -p "$BIN_DIR"
 cp "$src/bin/nova_apresentacao_md" "$BIN_DIR/nova_apresentacao_md"
 chmod +x "$BIN_DIR/nova_apresentacao_md"
+cp "$src/bin/apresentar" "$BIN_DIR/apresentar"
+chmod +x "$BIN_DIR/apresentar"
 
 [ -n "$cleanup" ] && rm -rf "$cleanup"
 
@@ -67,4 +69,5 @@ case ":$PATH:" in
 esac
 echo "Create a new deck with:"
 echo "    nova_apresentacao_md dark minha_palestra"
-echo "Then double-click minha_palestra.html (offline, no server needed)."
+echo "Then present it offline with:"
+echo "    apresentar minha_palestra.html"
