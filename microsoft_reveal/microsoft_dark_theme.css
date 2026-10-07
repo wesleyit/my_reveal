@@ -1,45 +1,63 @@
-/* Variables for Fonts and Default Colors */
+/*
+ * Microsoft Reveal.js Theme — DARK
+ *
+ * Structure:
+ *   1. Brand palette  .... raw Microsoft colors (shared by both themes)
+ *   2. Typography ........ fonts and sizes (shared by both themes)
+ *   3. Semantic tokens ... role-based colors; THIS is the only block that
+ *                          differs between the dark and light themes.
+ * Everything below :root is identical in both theme files.
+ */
 :root {
-  --white: #E3E3E3;
+  /* 1. Brand palette */
+  --white: #FFFFFF;
+  --off-white: #E3E3E3;
   --light-blue: #A0E3FD;
+  --cyan: #50E6FF;
   --blue: #1860C5;
   --dark-blue: #00222E;
 
+  /* 2. Typography */
   --font-thin: segoe_sans_display_light;
   --font-semilight: segoe_sans_display_semilight;
   --font-regular: segoe_sans_display_regular;
   --font-bold: segoe_sans_display_bold;
   --font-mono: caskaydia_cove_nerd_font_mono;
 
-  --background-color: #00222E;
-  --main-font: segoe_sans_display_regular;
+  --main-font: var(--font-regular);
   --main-font-size: 42px;
-  --main-color: #E3E3E3;
   --block-margin: 20px;
 
+  --heading-font: var(--font-thin);
   --heading-margin: 0 0 20px 0;
-  --heading-font: segoe_sans_display_light;
-  --heading-color: #A0E3FD;
+  --heading-font-weight: 300;
   --heading-line-height: 1.2;
   --heading-letter-spacing: normal;
-  --heading-text-transform: normal;
+  --heading-text-transform: none;
   --heading-text-shadow: none;
-  --heading-font-weight: 300;
-  --heading1-text-shadow: none;
   --heading1-size: 2.5em;
   --heading2-size: 1.6em;
   --heading3-size: 1.3em;
   --heading4-size: 1em;
 
-  --code-font: caskaydia_cove_nerd_font_mono;
-  --link-color: #1860C5;
-  --link-color-hover: #A0E3FD;
-  --selection-background-color: #666666;
-  --selection-color: #ffffff;
-
+  /* 3. Semantic tokens (dark theme) */
+  --background-color: var(--dark-blue);
+  --main-color: var(--off-white);
+  --heading-color: var(--light-blue);
+  --accent-color: var(--light-blue);
+  --accent-hover: var(--cyan);
+  --strong-color: var(--cyan);
+  --code-background: #00171F;
+  --blockquote-background: rgba(255, 255, 255, 0.05);
+  --frame-color: var(--off-white);
+  --footer-color: #5E7D87;
+  --selection-color: var(--off-white);
+  --selection-background: var(--blue);
 }
 
-/* Font Imports from TTF Files */
+/*********************************************
+ * FONT IMPORTS (from local TTF files)
+ *********************************************/
 @font-face {
   font-family: segoe_sans_display_light;
   src: url('fonts/Segoe-Sans-Display-Light.ttf') format('truetype');
@@ -65,28 +83,33 @@
   src: url('fonts/CaskaydiaCoveNerdFontMono-Regular.ttf') format('truetype');
 }
 
-.reveal .fg-white {
-  color: var(--white);
+/*********************************************
+ * COLOR HELPER CLASSES
+ *********************************************/
+.reveal .fg-white      { color: var(--white); }
+.reveal .fg-light-blue { color: var(--light-blue); }
+.reveal .fg-blue       { color: var(--blue); }
+.reveal .fg-dark-blue  { color: var(--dark-blue); }
+
+.reveal .bg-white      { background-color: var(--white); }
+.reveal .bg-light-blue { background-color: var(--light-blue); }
+.reveal .bg-blue       { background-color: var(--blue); }
+.reveal .bg-dark-blue  { background-color: var(--dark-blue); }
+
+/*********************************************
+ * BASE / VIEWPORT
+ *********************************************/
+html.reveal-viewport,
+.reveal-viewport,
+body {
+  background: var(--background-color);
+  background-color: var(--background-color);
 }
 
-.reveal .fg-light-blue {
-  color: var(--light-blue);
-}
-
-.reveal .fg-blue {
-  color: var(--blue);
-}
-
-.reveal .bg-white {
-  background-color: var(--white);
-}
-
-.reveal .bg-light-blue {
-  background-color: var(--light-blue);
-}
-
-.reveal .bg-blue {
-  background-color: var(--blue);
+.reveal {
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
+  color: var(--main-color);
 }
 
 section.has-dark-background,
@@ -99,50 +122,38 @@ section.has-dark-background h6 {
   color: var(--white);
 }
 
-.reveal-viewport {
-  background: var(--background-color);
-  background-color: var(--background-color);
-}
-
-.reveal {
-  font-family: var(--main-font);
-  font-size: var(--main-font-size);
-  color: var(--main-color);
-}
-
 .reveal ::selection {
-  color: var(--background-color);
-  background: var(--blue);
+  color: var(--selection-color);
+  background: var(--selection-background);
   text-shadow: none;
 }
 
 .reveal ::-moz-selection {
-  color: var(--background-color);
-  background: var(--blue);
+  color: var(--selection-color);
+  background: var(--selection-background);
   text-shadow: none;
 }
 
-.reveal .slide-background-content {
-  background-image: url(backgrounds/logo_squid_ink.png);
+.reveal .slides section,
+.reveal .slides section > section {
+  line-height: 1.3;
+  font-weight: inherit;
 }
 
+/*********************************************
+ * FOOTER
+ *********************************************/
 .footer {
   position: fixed;
   bottom: 10px;
   left: 100px;
   font-family: var(--font-bold);
   font-size: 0.8em;
-  color: var(--selection-background-color);
-}
-
-.reveal .slides section,
-.reveal .slides section>section {
-  line-height: 1.3;
-  font-weight: inherit;
+  color: var(--footer-color);
 }
 
 /*********************************************
- * HEADERS
+ * HEADINGS
  *********************************************/
 .reveal h1,
 .reveal h2,
@@ -150,42 +161,27 @@ section.has-dark-background h6 {
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-  margin: 0 0 20px 0;
-  color: var(--main-color);
+  margin: var(--heading-margin);
+  color: var(--heading-color);
   font-family: var(--heading-font);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: normal;
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
   text-transform: var(--heading-text-transform);
-  text-shadow: none;
+  text-shadow: var(--heading-text-shadow);
   word-wrap: break-word;
 }
 
-.reveal h1 {
-  font-size: 2.5em;
-}
-
-.reveal h2 {
-  font-size: 1.6em;
-}
-
-.reveal h3 {
-  font-size: 1.3em;
-}
-
-.reveal h4 {
-  font-size: 1em;
-}
-
-.reveal h1 {
-  text-shadow: none;
-}
+.reveal h1 { font-size: var(--heading1-size); }
+.reveal h2 { font-size: var(--heading2-size); }
+.reveal h3 { font-size: var(--heading3-size); }
+.reveal h4 { font-size: var(--heading4-size); }
 
 /*********************************************
- * OTHER
+ * TEXT ELEMENTS
  *********************************************/
 .reveal p {
-  margin: 20px 0;
+  margin: var(--block-margin) 0;
   line-height: 1.3;
 }
 
@@ -200,7 +196,7 @@ section.has-dark-background h6 {
 .reveal strong,
 .reveal b {
   font-weight: bold;
-  color: var(--orange);
+  color: var(--strong-color);
 }
 
 .reveal em {
@@ -215,21 +211,10 @@ section.has-dark-background h6 {
   margin: 0 0 0 1em;
 }
 
-.reveal ol {
-  list-style-type: decimal;
-}
-
-.reveal ul {
-  list-style-type: disc;
-}
-
-.reveal ul ul {
-  list-style-type: square;
-}
-
-.reveal ul ul ul {
-  list-style-type: circle;
-}
+.reveal ol { list-style-type: decimal; }
+.reveal ul { list-style-type: disc; }
+.reveal ul ul { list-style-type: square; }
+.reveal ul ul ul { list-style-type: circle; }
 
 .reveal ul ul,
 .reveal ul ol,
@@ -239,22 +224,17 @@ section.has-dark-background h6 {
   margin-left: 40px;
 }
 
-.reveal dt {
-  font-weight: bold;
-}
-
-.reveal dd {
-  margin-left: 40px;
-}
+.reveal dt { font-weight: bold; }
+.reveal dd { margin-left: 40px; }
 
 .reveal blockquote {
   display: block;
   position: relative;
   width: 70%;
-  margin: 20px auto;
+  margin: var(--block-margin) auto;
   padding: 5px;
   font-style: italic;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--blockquote-background);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -263,21 +243,22 @@ section.has-dark-background h6 {
   display: inline-block;
 }
 
-.reveal q {
-  font-style: italic;
-}
+.reveal q { font-style: italic; }
 
+/*********************************************
+ * CODE
+ *********************************************/
 .reveal pre {
   display: block;
   position: relative;
   width: 90%;
-  margin: 20px auto;
+  margin: var(--block-margin) auto;
   text-align: left;
   font-size: 0.55em;
   font-family: var(--font-mono);
   line-height: 1.2em;
   word-wrap: break-word;
-  background-color: black;
+  background-color: var(--code-background);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -294,6 +275,9 @@ section.has-dark-background h6 {
   word-wrap: normal;
 }
 
+/*********************************************
+ * TABLES
+ *********************************************/
 .reveal table {
   margin: auto;
   border-collapse: collapse;
@@ -312,29 +296,21 @@ section.has-dark-background h6 {
 }
 
 .reveal table th[align="center"],
-.reveal table td[align="center"] {
-  text-align: center;
-}
+.reveal table td[align="center"] { text-align: center; }
 
 .reveal table th[align="right"],
-.reveal table td[align="right"] {
-  text-align: right;
-}
+.reveal table td[align="right"] { text-align: right; }
 
 .reveal table tbody tr:last-child th,
 .reveal table tbody tr:last-child td {
   border-bottom: none;
 }
 
-.reveal sup {
-  vertical-align: super;
-  font-size: smaller;
-}
-
-.reveal sub {
-  vertical-align: sub;
-  font-size: smaller;
-}
+/*********************************************
+ * INLINE HELPERS
+ *********************************************/
+.reveal sup { vertical-align: super; font-size: smaller; }
+.reveal sub { vertical-align: sub; font-size: smaller; }
 
 .reveal small {
   display: inline-block;
@@ -343,39 +319,35 @@ section.has-dark-background h6 {
   vertical-align: top;
 }
 
-.reveal small * {
-  vertical-align: top;
-}
+.reveal small * { vertical-align: top; }
 
-.reveal img {
-  margin: 20px 0;
-}
+.reveal img { margin: var(--block-margin) 0; }
 
 /*********************************************
  * LINKS
  *********************************************/
 .reveal a {
-  color: var(--light-blue);
+  color: var(--accent-color);
   text-decoration: none;
   transition: color .15s ease;
 }
 
 .reveal a:hover {
-  color: var(--light-blue);
+  color: var(--accent-hover);
   text-shadow: none;
   border: none;
 }
 
 .reveal .roll span:after {
   color: var(--background-color);
-  background: var(--light-blue);
+  background: var(--accent-color);
 }
 
 /*********************************************
- * Frame helper
+ * FRAME HELPER
  *********************************************/
 .reveal .r-frame {
-  border: 4px solid var(--main-color);
+  border: 4px solid var(--frame-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -384,7 +356,7 @@ section.has-dark-background h6 {
 }
 
 .reveal a:hover .r-frame {
-  border-color: var(--light-blue);
+  border-color: var(--accent-hover);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
 }
 
@@ -392,16 +364,11 @@ section.has-dark-background h6 {
  * NAVIGATION CONTROLS AND CHALK BUTTONS
  *********************************************/
 .reveal .controls {
-  color: var(--light-blue);
+  color: var(--accent-color);
 }
 
-.reveal .chalkboard-button i {
-  opacity: 0.5;
-}
-
-.reveal .chalkboard-button i:hover {
-  opacity: 1.0;
-}
+.reveal .chalkboard-button i { opacity: 0.5; }
+.reveal .chalkboard-button i:hover { opacity: 1.0; }
 
 .reveal .chalkboard-button i.fa-pencil-square-o {
   position: fixed;
@@ -422,7 +389,7 @@ section.has-dark-background h6 {
  *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
-  color: var(--light-blue);
+  color: var(--accent-color);
 }
 
 /*********************************************
