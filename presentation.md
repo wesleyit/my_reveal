@@ -1,4 +1,4 @@
-<!-- .slide: data-background="https://www.wesleyrodrigues.com.br/my_reveal/microsoft_reveal/backgrounds/nologo/blue_rainbow.png" -->
+<!-- .slide: data-background="https://www.wesleyrodrigues.com.br/my_reveal/microsoft_reveal/backgrounds/logo_black/blue_rainbow.png" -->
 
 # Welcome, human!
 
