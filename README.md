@@ -1,54 +1,92 @@
 # Beautiful Presentations
-Some professionals need to prepare slides for presentations many times a month. There are many challenges in this task. One of these challenges is to organize the thoughts. A good way to organize them is to write down in a text file, or in a Markdown like this:
 
-```markdown
-# Presentation
-This is my first slide
+Create clean, on-brand slide decks straight from Markdown, powered by
+[reveal.js](https://revealjs.com/) and a pair of custom Microsoft themes
+(light and dark).
 
----
+![Light theme preview](README.assets/presentation-preview-light.png)
+![Dark theme preview](README.assets/presentation-preview-dark.png)
 
-## Intro
-Hi, I am Wesley.
+## Why?
 
----
+Professionals often need to build slides several times a month, and two problems
+show up again and again:
 
-## Thanks
-Bye Bye
-```
+- **Organizing ideas.** Writing in plain Markdown lets you focus on the content
+  first and the styling later:
 
-Other common problem is to ensure that all slides have the same theme, fonts, colors... when you copy something from a website, the fonts and formats come together, making your slides look like a mosaic. To solve this problem, you need to remember to paste in plain text only, ignoring the source formatting.
+  ```markdown
+  # Presentation
+  This is my first slide
 
-## Reveal.js and my theme
+  ---
 
-Developers love to create content as code. Why not presentations? With reveal.js you can create presentations from Markdown and HTML.
+  ## Intro
+  Hi, I am Wesley.
 
-This customization enables a special plugin for making notes in the slides and adds themes for Microsoft presentations.
+  ---
+
+  ## Thanks
+  Bye Bye
+  ```
+
+- **Keeping a consistent look.** When you copy content from the web, fonts and
+  formatting come along and turn your deck into a mosaic. With a single theme
+  applied to every slide, everything stays visually consistent.
+
+## What's included
+
+- **Two Microsoft themes** — a light and a dark variant that share the same
+  structure and only differ in their color tokens.
+- **Microsoft fonts** — Segoe Sans Display for text and CaskaydiaCove Nerd Font
+  for code.
+- **Branded backgrounds** — ready-to-use wallpapers under
+  [`microsoft_reveal/backgrounds`](microsoft_reveal/backgrounds).
+- **Chalkboard plugin** — draw and take notes on your slides during a talk.
+- **Code highlighting** — syntax highlighting via the Monokai theme.
+
+## Themes
+
+| Light | Dark |
+| ----- | ---- |
+| `microsoft_light_theme.css` | `microsoft_dark_theme.css` |
+| White background, dark-blue text, blue headings | Dark-blue background, off-white text, light-blue headings |
+
+Each theme is organized in three layers: the raw brand palette, the typography,
+and the semantic color tokens. To tweak colors, edit only the semantic tokens in
+the `:root` block — everything else is shared.
 
 ## How to use
 
-First, I recommend you installing a very useful extension for VSCode: Go Live. This extension allows you to start a simple HTTP server from your current folder.
+First, install the handy **Live Server** extension for VS Code. It lets you
+serve the current folder over a simple HTTP server.
 
-<!-- Copilot: Remember me to replace this with an updated screenshot when done -->
-![image-20200627020041850](README.assets/image-20200627020041850.png)
+Create a folder and download the two files for the theme you want.
 
-Then, you will need to create a folder and get 2 files. If you want the light theme, type this on your terminal:
-
-```shell
-mkdir my_important_presentation
-cd my_important_presentation
-wget https://raw.githubusercontent.com/wesleyit/my_reveal/master/samples/light.html
-wget https://raw.githubusercontent.com/wesleyit/my_reveal/master/samples/light_presentation.md
-code .
-```
-
-If you want the dark theme, type this instead:
+**Light theme:**
 
 ```shell
 mkdir my_important_presentation
 cd my_important_presentation
-wget https://raw.githubusercontent.com/wesleyit/my_reveal/master/samples/dark.html
-wget https://raw.githubusercontent.com/wesleyit/my_reveal/master/samples/dark_presentation.md
+wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/light.html
+wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/light_presentation.md
 code .
 ```
 
-Then, edit your markdown file, save it and click **Go Live**. Your browser will open the presentation. 
+**Dark theme:**
+
+```shell
+mkdir my_important_presentation
+cd my_important_presentation
+wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/dark.html
+wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/dark_presentation.md
+code .
+```
+
+Then edit the Markdown file, save it, and click **Go Live**. Your browser opens
+the presentation. Use the arrow keys to navigate and press `B` to toggle the
+chalkboard.
+
+## License
+
+Released under the [MIT License](LICENSE).
