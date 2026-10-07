@@ -5,7 +5,7 @@
 Ready to build nice presentations?
 
 ---
-<!-- .slide: data-background="#ff9900" -->
+<!-- .slide: data-background="#1860C5" -->
 
 ## Well, let's start!
 
@@ -52,9 +52,9 @@ Go out test them \o/
 
 <!-- .slide: data-background-image="https://media.giphy.com/media/3ZALZoBtI1KJa/giphy.gif" -->
 
-# Go Build. <!-- .element: class="fragment fg-white" -->
+# Let's build. <!-- .element: class="fragment fg-white" -->
 
-# NOW! <!-- .element: class="fragment fg-white" -->
+# Together! <!-- .element: class="fragment fg-white" -->
 
 ---
 
