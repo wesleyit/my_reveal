@@ -22,15 +22,14 @@ Other common problem is to ensure that all slides have the same theme, fonts, co
 
 Developers love to create content as code. Why not presentations? With reveal.js you can create presentations from Markdown and HTML.
 
-This customization enables a special plugin for making notes in the slides and adds 2 themes for AWS presentations: a light and a dark one.
+This customization enables a special plugin for making notes in the slides and adds themes for Microsoft presentations.
 
 ## How to use
 
 First, I recommend you installing a very useful extension for VSCode: Go Live. This extension allows you to start a simple HTTP server from your current folder.
 
+<!-- Copilot: Remember me to replace this with an updated screenshot when done -->
 ![image-20200627020041850](README.assets/image-20200627020041850.png)
-
-
 
 Then, you will need to create a folder and get 2 files. If you want the light theme, type this on your terminal:
 
@@ -53,4 +52,3 @@ code .
 ```
 
 Then, edit your markdown file, save it and click **Go Live**. Your browser will open the presentation. 
-

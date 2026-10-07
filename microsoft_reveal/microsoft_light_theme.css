@@ -1,21 +1,25 @@
 /* Variables for Fonts and Default Colors */
 :root {
-  --white: #ffffff;
-  --orange: #ff9900;
-  --squid-ink: #232f3e;
-  --dark-squid-ink: #161e2d;
-  --font-thin: amazon_ember_thin;
-  --font-regular: amazon_ember_regular;
-  --font-bold: amazon_ember_bold;
-  --font-mono: amazon_ember_mono;
-  --background-color: #ffffff;
-  --main-font: amazon_ember_regular;
+  --white: #E3E3E3;
+  --light-blue: #A0E3FD;
+  --blue: #1860C5;
+  --dark-blue: #00222E;
+
+  --font-thin: segoe_sans_display_light;
+  --font-semilight: segoe_sans_display_semilight;
+  --font-regular: segoe_sans_display_regular;
+  --font-bold: segoe_sans_display_bold;
+  --font-mono: caskaydia_cove_nerd_font_mono;
+
+  --background-color: #00222E;
+  --main-font: segoe_sans_display_regular;
   --main-font-size: 42px;
-  --main-color: #232f3e;
+  --main-color: #E3E3E3;
   --block-margin: 20px;
+
   --heading-margin: 0 0 20px 0;
-  --heading-font: amazon_ember_thin;
-  --heading-color: #ff9900;
+  --heading-font: segoe_sans_display_light;
+  --heading-color: #A0E3FD;
   --heading-line-height: 1.2;
   --heading-letter-spacing: normal;
   --heading-text-transform: normal;
@@ -26,57 +30,63 @@
   --heading2-size: 1.6em;
   --heading3-size: 1.3em;
   --heading4-size: 1em;
-  --code-font: amazon_ember_mono;
-  --link-color: #232f3e;
-  --link-color-hover: #ff9900;
-  --selection-background-color: #999999;
+
+  --code-font: caskaydia_cove_nerd_font_mono;
+  --link-color: #1860C5;
+  --link-color-hover: #A0E3FD;
+  --selection-background-color: #666666;
   --selection-color: #ffffff;
 
 }
 
 /* Font Imports from TTF Files */
 @font-face {
-  font-family: amazon_ember_thin;
-  src: url('fonts/amazon_ember_thin.ttf') format('truetype');
+  font-family: segoe_sans_display_light;
+  src: url('fonts/Segoe-Sans-Display-Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: amazon_ember_regular;
-  src: url('fonts/amazon_ember_regular.ttf') format('truetype');
+  font-family: segoe_sans_display_semilight;
+  src: url('fonts/Segoe-Sans-Display-Semilight.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: amazon_ember_bold;
-  src: url('fonts/amazon_ember_bold.ttf') format('truetype');
+  font-family: segoe_sans_display_regular;
+  src: url('fonts/Segoe-Sans-Display.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: amazon_ember_mono;
-  src: url('fonts/amazon_ember_mono.ttf') format('truetype');
+  font-family: segoe_sans_display_bold;
+  src: url('fonts/Segoe-Sans-Text-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: caskaydia_cove_nerd_font_mono;
+  src: url('fonts/CaskaydiaCoveNerdFontMono-Regular.ttf') format('truetype');
 }
 
 .reveal .fg-white {
   color: var(--white);
 }
 
-.reveal .fg-orange {
-  color: var(--orange);
+.reveal .fg-light-blue {
+  color: var(--light-blue);
 }
 
-.reveal .fg-squid-ink {
-  color: var(--squid-ink);
+.reveal .fg-blue {
+  color: var(--blue);
 }
 
 .reveal .bg-white {
   background-color: var(--white);
 }
 
-.reveal .bg-orange {
-  background-color: var(--orange);
+.reveal .bg-light-blue {
+  background-color: var(--light-blue);
 }
 
-.reveal .bg-squid-ink {
-  background-color: var(--squid-ink);
+.reveal .bg-blue {
+  background-color: var(--blue);
 }
 
 section.has-dark-background,
@@ -102,18 +112,18 @@ section.has-dark-background h6 {
 
 .reveal ::selection {
   color: var(--background-color);
-  background: var(--orange);
+  background: var(--blue);
   text-shadow: none;
 }
 
 .reveal ::-moz-selection {
   color: var(--background-color);
-  background: var(--orange);
+  background: var(--blue);
   text-shadow: none;
 }
 
 .reveal .slide-background-content {
-  background-image: url(backgrounds/logo_white.png);
+  background-image: url(backgrounds/logo_squid_ink.png);
 }
 
 .footer {
@@ -122,7 +132,7 @@ section.has-dark-background h6 {
   left: 100px;
   font-family: var(--font-bold);
   font-size: 0.8em;
-  color: #999999;
+  color: var(--selection-background-color);
 }
 
 .reveal .slides section,
@@ -267,6 +277,7 @@ section.has-dark-background h6 {
   font-family: var(--font-mono);
   line-height: 1.2em;
   word-wrap: break-word;
+  background-color: black;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -344,20 +355,20 @@ section.has-dark-background h6 {
  * LINKS
  *********************************************/
 .reveal a {
-  color: var(--orange);
+  color: var(--light-blue);
   text-decoration: none;
   transition: color .15s ease;
 }
 
 .reveal a:hover {
-  color: var(--orange);
+  color: var(--light-blue);
   text-shadow: none;
   border: none;
 }
 
 .reveal .roll span:after {
   color: var(--background-color);
-  background: var(--orange);
+  background: var(--light-blue);
 }
 
 /*********************************************
@@ -373,7 +384,7 @@ section.has-dark-background h6 {
 }
 
 .reveal a:hover .r-frame {
-  border-color: var(--orange);
+  border-color: var(--light-blue);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
 }
 
@@ -381,7 +392,7 @@ section.has-dark-background h6 {
  * NAVIGATION CONTROLS AND CHALK BUTTONS
  *********************************************/
 .reveal .controls {
-  color: var(--orange);
+  color: var(--light-blue);
 }
 
 .reveal .chalkboard-button i {
@@ -411,7 +422,7 @@ section.has-dark-background h6 {
  *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
-  color: var(--orange);
+  color: var(--light-blue);
 }
 
 /*********************************************
