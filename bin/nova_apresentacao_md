@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+#
+# nova_apresentacao_md — create a new Microsoft-reveal deck (2 files: .html + .md)
+#
+# Usage:
+#   nova_apresentacao_md [light|dark] [name] [--online]
+#
+# Examples:
+#   nova_apresentacao_md                 # light theme, ./apresentacao.{html,md}, offline
+#   nova_apresentacao_md dark palestra   # dark theme,  ./palestra.{html,md},   offline
+#   nova_apresentacao_md dark palestra --online   # reference assets from GitHub Pages
+#
+# Offline decks reference the assets installed at $MY_REVEAL_DIR (default: ~/.my_reveal)
+# via file:// URLs, so you can just double-click the .html — no server, no internet.
+#
+set -euo pipefail
+
+MY_REVEAL_DIR="${MY_REVEAL_DIR:-$HOME/.my_reveal}"
+ONLINE_BASE="https://www.wesleyrodrigues.com.br/my_reveal/assets"
+
+usage() { sed -n '2,20p' "$0" | sed 's/^# \{0,1\}//'; }
+
+online=0
+positional=()
+for arg in "$@"; do
+    case "$arg" in
+        --online) online=1 ;;
+        -h|--help) usage; exit 0 ;;
+        -*) echo "Unknown option: $arg" >&2; usage; exit 1 ;;
+        *) positional+=("$arg") ;;
+    esac
+done
+
+theme="${positional[0]:-light}"
+name="${positional[1]:-apresentacao}"
+
+case "$theme" in
+    light|dark) ;;
+    *) echo "Theme must be 'light' or 'dark' (got '$theme')." >&2; exit 1 ;;
+esac
+
+tpl_dir="$MY_REVEAL_DIR/templates"
+if [ ! -f "$tpl_dir/deck.html.template" ] || [ ! -f "$tpl_dir/deck.md.template" ]; then
+    echo "Templates not found in $tpl_dir." >&2
+    echo "Run the installer first:  curl -fsSL $ONLINE_BASE/../install.sh | bash" >&2
+    exit 1
+fi
+
+if [ "$online" -eq 1 ]; then
+    base="$ONLINE_BASE"
+else
+    base="file://$MY_REVEAL_DIR"
+fi
+
+if [ "$theme" = "dark" ]; then
+    title_bg="$base/theme/backgrounds/logo_white/darkblue.png"
+else
+    title_bg="$base/theme/backgrounds/logo_black/blue_rainbow.png"
+fi
+
+html="$name.html"
+md="$name.md"
+for f in "$html" "$md"; do
+    if [ -e "$f" ]; then
+        echo "Refusing to overwrite existing file: $f" >&2
+        exit 1
+    fi
+done
+
+sed -e "s#{{BASE}}#${base}#g" -e "s#{{THEME}}#${theme}#g" -e "s#{{MD}}#${md}#g" \
+    "$tpl_dir/deck.html.template" > "$html"
+sed -e "s#{{BASE}}#${base}#g" -e "s#{{TITLE_BG}}#${title_bg}#g" \
+    "$tpl_dir/deck.md.template" > "$md"
+
+echo "Created a $theme deck:"
+echo "  $PWD/$html"
+echo "  $PWD/$md"
+echo
+if [ "$online" -eq 1 ]; then
+    echo "Online mode: open with a local web server (e.g. VS Code Live Server)."
+else
+    echo "Offline mode: just open $html in your browser (double-click)."
+fi
+echo "Edit $md to write your slides."

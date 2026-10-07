@@ -1,0 +1,46 @@
+<!-- .slide: data-background="{{TITLE_BG}}" -->
+
+# Your title here
+
+A short, punchy subtitle
+
+---
+
+## Agenda
+
+- First topic <!-- .element: class="fragment" -->
+- Second topic <!-- .element: class="fragment" -->
+- Third topic <!-- .element: class="fragment" -->
+
+---
+
+## A slide with code
+
+```js [1-2|3|4]
+let a = 1;
+let b = 2;
+let c = x => a + b + x;
+c(3);
+```
+
+--
+
+## A vertical slide
+
+Press the down arrow to reach these.
+
+Use **bold** for emphasis and `inline code` when needed.
+
+---
+
+<!-- .slide: data-background="#1860C5" -->
+
+## A full-color accent slide
+
+Great for section breaks.
+
+---
+
+# Thank you!
+
+Questions? <!-- .element: class="fragment" -->

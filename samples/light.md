@@ -1,4 +1,4 @@
-<!-- .slide: data-background="assets/theme/backgrounds/logo_black/blue_rainbow.png" -->
+<!-- .slide: data-background="https://www.wesleyrodrigues.com.br/my_reveal/assets/theme/backgrounds/logo_color_gray/white.png" -->
 
 # Welcome, human!
 

@@ -8,23 +8,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/reveal/css/reset.css">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/reveal/css/reveal.css">
-    <link rel="stylesheet"
-        href="https://www.wesleyrodrigues.com.br/my_reveal/microsoft_reveal/microsoft_light_theme.css" id="theme">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/reveal/lib/css/monokai.css">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/font_awesome/css/font-awesome.min.css">
 
-    <script>
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ?
-            'https://www.wesleyrodrigues.com.br/my_reveal/reveal/css/print/pdf.css' :
-            'https://www.wesleyrodrigues.com.br/my_reveal/reveal/css/print/paper.css';
-        document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
-
+    <link rel="stylesheet" href="assets/reveal/reset.css">
+    <link rel="stylesheet" href="assets/reveal/reveal.css">
+    <link rel="stylesheet" href="assets/theme/microsoft_light_theme.css" id="theme">
+    <link rel="stylesheet" href="assets/reveal/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/plugins/chalkboard/style.css">
+    <link rel="stylesheet" href="assets/plugins/customcontrols/style.css">
 </head>
 
 <body>
@@ -39,86 +30,52 @@
         © 2026, Microsoft Corporation. All rights reserved. Trademarks are the property of their respective owners.
     </div>
 
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/reveal/js/reveal.js"></script>
+    <script src="assets/reveal/reveal.js"></script>
+    <script src="assets/reveal/plugin/markdown.js"></script>
+    <script src="assets/reveal/plugin/highlight.js"></script>
+    <script src="assets/reveal/plugin/search.js"></script>
+    <script src="assets/reveal/plugin/zoom.js"></script>
+    <script src="assets/reveal/plugin/notes.js"></script>
+    <script src="assets/plugins/chalkboard/plugin.js"></script>
+    <script src="assets/plugins/customcontrols/plugin.js"></script>
 
     <script>
         Reveal.initialize({
+            hash: true,
             controls: true,
             controlsLayout: 'edges',
             progress: true,
             center: true,
-            hash: true,
             transition: 'slide',
-            dependencies: [{
-                src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/markdown/marked.js',
-                condition: function () {
-                    return !!document.querySelector('[data-markdown]');
-                }
-            },
-            {
-                src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/markdown/markdown.js',
-                condition: function () {
-                    return !!document.querySelector('[data-markdown]');
-                }
-            },
-            {
-                src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/highlight/highlight.js'
-            },
-            {
-                src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/search/search.js',
-                async: true
-            },
-            {
-                src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/zoom-js/zoom.js',
-                async: true
-            },
-            {
-                src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal/plugin/notes/notes.js',
-                async: true
-            },
-            // External plugins
-            {
-                src: 'https://www.wesleyrodrigues.com.br/my_reveal/reveal_plugins/chalkboard/chalkboard.js',
-                async: true
-            },
-            ],
-            keyboard: {
-                67: function () {
-                    RevealChalkboard.toggleNotesCanvas()
-                }, // toggle notes canvas when 'c' is pressed
-                66: function () {
-                    RevealChalkboard.toggleChalkboard()
-                }, // toggle chalkboard when 'b' is pressed
-                46: function () {
-                    RevealChalkboard.clear()
-                }, // clear chalkboard when 'DEL' is pressed
-                8: function () {
-                    RevealChalkboard.reset()
-                }, // reset chalkboard data on current slide when 'BACKSPACE' is pressed
-                68: function () {
-                    RevealChalkboard.download()
-                }, // downlad recorded chalkboard drawing when 'd' is pressed
-                88: function () {
-                    RevealChalkboard.colorNext()
-                }, // cycle colors forward when 'x' is pressed
-                89: function () {
-                    RevealChalkboard.colorPrev()
-                }, // cycle colors backward when 'y' is pressed
-            },
+            plugins: [RevealMarkdown, RevealHighlight, RevealSearch, RevealZoom, RevealNotes, RevealChalkboard, RevealCustomControls],
             chalkboard: {
-                toggleChalkboardButton: {
-                    left: "60px",
-                    bottom: "30px",
-                    top: "auto",
-                    right: "auto"
-                },
-                toggleNotesButton: {
-                    left: "90px",
-                    bottom: "30px",
-                    top: "auto",
-                    right: "auto"
-                },
-            }
+                boardmarkerWidth: 3,
+                chalkWidth: 7,
+            },
+            customcontrols: {
+                collapseIcon: '<i class="fa fa-chevron-down"></i>',
+                controls: [
+                    {
+                        icon: '<i class="fa fa-pen-to-square"></i>',
+                        title: 'Toggle notes canvas (C)',
+                        action: 'RevealChalkboard.toggleNotesCanvas();'
+                    },
+                    {
+                        icon: '<i class="fa fa-pen"></i>',
+                        title: 'Toggle chalkboard (B)',
+                        action: 'RevealChalkboard.toggleChalkboard();'
+                    }
+                ]
+            },
+            keyboard: {
+                67: function () { RevealChalkboard.toggleNotesCanvas() }, // 'c'
+                66: function () { RevealChalkboard.toggleChalkboard() },  // 'b'
+                46: function () { RevealChalkboard.clear() },             // 'DEL'
+                8: function () { RevealChalkboard.reset() },              // 'BACKSPACE'
+                68: function () { RevealChalkboard.download() },          // 'd'
+                88: function () { RevealChalkboard.colorNext() },         // 'x'
+                89: function () { RevealChalkboard.colorPrev() },         // 'y'
+            },
         });
     </script>
 </body>

@@ -9,19 +9,19 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/reset.css">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/reveal.css">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/assets/theme/microsoft_dark_theme.css" id="theme">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/plugin/highlight/monokai.css">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/assets/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/assets/plugins/chalkboard/style.css">
-    <link rel="stylesheet" href="https://www.wesleyrodrigues.com.br/my_reveal/assets/plugins/customcontrols/style.css">
+    <link rel="stylesheet" href="{{BASE}}/reveal/reset.css">
+    <link rel="stylesheet" href="{{BASE}}/reveal/reveal.css">
+    <link rel="stylesheet" href="{{BASE}}/theme/microsoft_{{THEME}}_theme.css" id="theme">
+    <link rel="stylesheet" href="{{BASE}}/reveal/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="{{BASE}}/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="{{BASE}}/plugins/chalkboard/style.css">
+    <link rel="stylesheet" href="{{BASE}}/plugins/customcontrols/style.css">
 </head>
 
 <body>
     <div class="reveal">
         <div class="slides">
-            <section data-markdown="dark.md" data-separator="^---\n" data-separator-vertical="^--\n"
+            <section data-markdown="{{MD}}" data-separator="^---\n" data-separator-vertical="^--\n"
                 data-charset="utf-8">
             </section>
         </div>
@@ -30,14 +30,14 @@
         © 2026, Microsoft Corporation. All rights reserved. Trademarks are the property of their respective owners.
     </div>
 
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/reveal.js"></script>
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/plugin/markdown.js"></script>
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/plugin/highlight.js"></script>
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/plugin/search.js"></script>
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/plugin/zoom.js"></script>
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/assets/reveal/plugin/notes.js"></script>
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/assets/plugins/chalkboard/plugin.js"></script>
-    <script src="https://www.wesleyrodrigues.com.br/my_reveal/assets/plugins/customcontrols/plugin.js"></script>
+    <script src="{{BASE}}/reveal/reveal.js"></script>
+    <script src="{{BASE}}/reveal/plugin/markdown.js"></script>
+    <script src="{{BASE}}/reveal/plugin/highlight.js"></script>
+    <script src="{{BASE}}/reveal/plugin/search.js"></script>
+    <script src="{{BASE}}/reveal/plugin/zoom.js"></script>
+    <script src="{{BASE}}/reveal/plugin/notes.js"></script>
+    <script src="{{BASE}}/plugins/chalkboard/plugin.js"></script>
+    <script src="{{BASE}}/plugins/customcontrols/plugin.js"></script>
 
     <script>
         Reveal.initialize({

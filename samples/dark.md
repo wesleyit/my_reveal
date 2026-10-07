@@ -1,4 +1,4 @@
-<!-- .slide: data-background="assets/theme/backgrounds/logo_black/blue_rainbow.png" -->
+<!-- .slide: data-background="https://www.wesleyrodrigues.com.br/my_reveal/assets/theme/backgrounds/logo_white/darkblue.png" -->
 
 # Welcome, human!
 
@@ -13,7 +13,7 @@ Ready to build nice presentations?
 - Item 2 <!-- .element: class="fragment" data-fragment-index="1" -->
 
 --
-
+<!-- .slide: data-background="black" -->
 ## This is a code
 
 ```js [1-2|3|4]

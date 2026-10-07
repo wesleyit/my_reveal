@@ -1,91 +1,115 @@
 # Beautiful Presentations
 
-Create clean, on-brand slide decks straight from Markdown, powered by
-[reveal.js](https://revealjs.com/) and a pair of custom Microsoft themes
-(light and dark).
+Clean, on-brand Microsoft slide decks written in plain Markdown, powered by
+[reveal.js](https://revealjs.com/) 6. Pick a **light** or **dark** theme, write
+your slides in a `.md` file, and present.
 
 ![Light theme preview](README.assets/presentation-preview-light.png)
 ![Dark theme preview](README.assets/presentation-preview-dark.png)
 
-## Why?
+Every deck is just **two files** — an `.html` and a `.md` — that reference a
+shared set of assets (the reveal.js engine, the Microsoft themes, fonts,
+backgrounds and plugins). You can use those assets straight from the web, or
+install them locally for a fully offline workflow.
 
-Professionals often need to build slides several times a month, and two problems
-show up again and again:
+## Quick start — online (no install)
 
-- **Organizing ideas.** Writing in plain Markdown lets you focus on the content
-  first and the styling later:
+Download the two files for the theme you want and open them with a local web
+server (the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+extension for VS Code works great):
 
-  ```markdown
-  # Presentation
-  This is my first slide
+```shell
+mkdir my_talk && cd my_talk
+# dark theme
+wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/dark.html
+wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/dark.md
+# ...or light theme
+# wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/light.html
+# wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/light.md
+```
 
-  ---
+Edit the `.md`, then click **Go Live**. The assets load from GitHub Pages, so
+you need an internet connection.
 
-  ## Intro
-  Hi, I am Wesley.
+## Quick start — offline (install once)
 
-  ---
+Install the assets locally and get a command that scaffolds new decks:
 
-  ## Thanks
-  Bye Bye
-  ```
+```shell
+curl -fsSL https://www.wesleyrodrigues.com.br/my_reveal/install.sh | bash
+```
 
-- **Keeping a consistent look.** When you copy content from the web, fonts and
-  formatting come along and turn your deck into a mosaic. With a single theme
-  applied to every slide, everything stays visually consistent.
+This copies the assets to `~/.my_reveal` and installs the
+`nova_apresentacao_md` command to `~/.local/bin`. Then, in any folder:
 
-## What's included
+```shell
+nova_apresentacao_md dark minha_palestra
+#   -> creates ./minha_palestra.html and ./minha_palestra.md
+```
 
-- **Two Microsoft themes** — a light and a dark variant that share the same
-  structure and only differ in their color tokens.
-- **Microsoft fonts** — Segoe Sans Display for text and CaskaydiaCove Nerd Font
-  for code.
-- **Branded backgrounds** — ready-to-use wallpapers under
-  [`microsoft_reveal/backgrounds`](microsoft_reveal/backgrounds).
-- **Chalkboard plugin** — draw and take notes on your slides during a talk.
-- **Code highlighting** — syntax highlighting via the Monokai theme.
+The generated deck references the local assets via `file://`, so you can just
+**double-click the `.html`** — no server and no internet required.
+
+```text
+Usage: nova_apresentacao_md [light|dark] [name] [--online]
+  theme   light (default) or dark
+  name    output name       (default: apresentacao)
+  --online  reference the assets from GitHub Pages instead of ~/.my_reveal
+```
+
+> Linux only. The installer uses bash and writes to `~/.my_reveal` and
+> `~/.local/bin` (both overridable via the `MY_REVEAL_DIR` and `BIN_DIR`
+> environment variables).
+
+## Writing slides
+
+The `.md` file is standard reveal.js Markdown:
+
+- `---` separates horizontal slides, `--` separates vertical slides.
+- Set a per-slide background with
+  `<!-- .slide: data-background="#1860C5" -->` (a color) or a background image.
+- Fenced code blocks get syntax highlighting (Monokai), e.g. ` ```js [1-2|3] `.
+- Reveal fragments: `- item <!-- .element: class="fragment" -->`.
+
+### Chalkboard
+
+Each deck ships with a chalkboard for live annotation:
+
+| Key | Action |
+| --- | ------ |
+| `B` | Toggle the chalkboard |
+| `C` | Toggle the notes canvas (draw over the slide) |
+| `X` / `Y` | Next / previous pen color |
+| `DEL` | Clear the current board |
+
+There are also on-screen buttons in the bottom-right corner.
 
 ## Themes
 
 | Light | Dark |
 | ----- | ---- |
-| `microsoft_light_theme.css` | `microsoft_dark_theme.css` |
 | White background, dark-blue text, blue headings | Dark-blue background, off-white text, light-blue headings |
 
-Each theme is organized in three layers: the raw brand palette, the typography,
-and the semantic color tokens. To tweak colors, edit only the semantic tokens in
-the `:root` block — everything else is shared.
+Both themes share the same structure and differ only in their semantic color
+tokens. To tweak colors, edit the `:root` block of
+`assets/theme/microsoft_light_theme.css` or `..._dark_theme.css`.
 
-## How to use
+## Repository layout
 
-First, install the handy **Live Server** extension for VS Code. It lets you
-serve the current folder over a simple HTTP server.
-
-Create a folder and download the two files for the theme you want.
-
-**Light theme:**
-
-```shell
-mkdir my_important_presentation
-cd my_important_presentation
-wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/light.html
-wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/light_presentation.md
-code .
+```text
+my_reveal/
+├── install.sh                 # offline installer (Linux)
+├── bin/nova_apresentacao_md   # the deck generator
+├── templates/                 # deck .html / .md templates
+├── assets/                    # the shared runtime assets
+│   ├── reveal/                #   reveal.js 6 engine + bundled plugins
+│   ├── plugins/               #   chalkboard + customcontrols
+│   ├── fontawesome/           #   Font Awesome 6
+│   └── theme/                 #   Microsoft themes, fonts, backgrounds, logos
+├── samples/                   # ready-to-download online decks
+├── index.html + presentation.md   # the live demo (GitHub Pages landing)
+└── README.md
 ```
-
-**Dark theme:**
-
-```shell
-mkdir my_important_presentation
-cd my_important_presentation
-wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/dark.html
-wget https://raw.githubusercontent.com/wesleyit/my_reveal/main/samples/dark_presentation.md
-code .
-```
-
-Then edit the Markdown file, save it, and click **Go Live**. Your browser opens
-the presentation. Use the arrow keys to navigate and press `B` to toggle the
-chalkboard.
 
 ## License
 
